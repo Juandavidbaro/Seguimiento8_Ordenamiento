@@ -109,60 +109,35 @@ public class Country implements Comparable<Country> {
 	public void setBronze(int bronze) {
 		this.bronze = bronze;
 	}
-
-
-	
-	
-	public String toString1() {
-		return name + " " + goldMedalM + " " + silverMedalM+ " " + bronzeMedalM ;
-	}
-	
-	public String toString2() {
-		return  name + " " + goldMedalF + " " + silverMedalF+ " " + bronzeMedalF ;
-	}
-	
-	public String toString3() {
-		return name + " " + gold + " " + silver+ " " + bronze ;
-	}
 	
 	@Override
-	public int compareTo(Country o) {
-		int result = 0;
-		
-		result = this.getGoldMedalF() - o.getGoldMedalF();
-		
-		if (result == 0) {
-			result = this.getSilverMedalF() - o.getSilverMedalF();
+	public int compareTo(Country c) {
+		// TODO Auto-generated method stub
+		if (this.goldMedalF == c.getGoldMedalF()) {
+			if (this.silverMedalF == c.getSilverMedalF()) {
+				if (this.bronzeMedalF == c.getBronzeMedalF()) {
+					return name.compareTo(c.getName());
+				} else {
+					if (this.bronzeMedalF > c.getBronzeMedalF()) {
+						return 1;
+					} else {
+						return -1;
+					}
+				}
+			} else {
+				if (this.silverMedalF > c.getSilverMedalF()) {
+					return 1;
+				} else {
+					return -1;
+				}
+			}
+		} else {
+			if (this.goldMedalF > c.getGoldMedalF()) {
+				return 1;
+			} else {
+				return -1;
+			}
 		}
-		
-		if (result == 0) {
-			result = this.getBronzeMedalF() - o.getBronzeMedalF();
-		}
-		
-		if (result==0) {
-			result = o.getName().compareTo(this.getName());
-		}
-		return result;
-	}
-
-	public int compareByOro(Country o) {
-		
-		return this.gold - o.gold;
-	}
-	
-	public int compareByPlata(Country o) {
-		
-		return this.silver - o.silver;
-	}
-	
-	public int compareByBronce(Country o) {
-	
-	return this.bronze - o.bronze;
-	}
-
-	public int compareByName(Country o) {
-	
-	return this.name.compareTo(o.name);
 	}
 
 	

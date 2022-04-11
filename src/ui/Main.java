@@ -4,13 +4,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
-import model.Country;
 import model.CList;
+import model.Country;
 
 public class Main {
 	
-	private static CList cList;
+	static CList cList=new CList();
 	
 	public static void main(String[] args) throws IOException {
 		
@@ -25,8 +24,6 @@ public class Main {
 		String s = bf2.readLine();	
 		
 		int n = Integer.parseInt(s);
-		
-		cList= new CList();
 		
 		for (int  i = 0; i<n;i++) {
 			
@@ -46,44 +43,18 @@ public class Main {
 			
 		}
 		
-		cList.sortComparatorClass();
-		printList();
-		
-		cList.sortCollectionsNaturalOrder();
-		printList2();
-		
-		cList.bubbleSort();
-		printList3();
-	}
-	
-	public static void printList() {
-		
 		System.out.println("Masculino");
-		for (int i = 0; i < cList.getCountry().size(); i++) {
-			System.out.println(cList.getCountry().get(i).toString1());
-		}
+		cList.sortByMedalsM();
+		cList.print1();
 		System.out.println("----------");
-		
-	}
-	
-	public static void printList2() {
 		
 		System.out.println("Femenino");
-		for (int i = 0; i < cList.getCountry().size(); i++) {
-			System.out.println(cList.getCountry().get(i).toString2());
-		}
+		cList.sortByMedalsF();
+		cList.print2();
 		System.out.println("----------");
 		
-	}
-	
-	public static void printList3() {
-		
 		System.out.println("Combinado");
-		for (int i = 0; i < cList.getCountry().size(); i++) {
-			System.out.println(cList.getCountry().get(i).toString3());
-		}
-		
-	}
-	
-	
+		cList.sortByMedalsC();
+		cList.print3();
+	}	
 }
